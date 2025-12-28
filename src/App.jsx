@@ -12,6 +12,7 @@ import Careers from './pages/Careers';
 import About from './pages/About';
 import Industries from './pages/Industries';
 import CaseStudies from './pages/CaseStudies';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/insights" element={<Insights />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
             {/* Fallback */}
             <Route path="*" element={<Home />} />
           </Routes>

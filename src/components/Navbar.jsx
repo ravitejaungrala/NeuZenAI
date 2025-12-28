@@ -48,9 +48,9 @@ const Navbar = () => {
       name: 'Products',
       path: '/products',
       dropdown: [
-        { name: 'NeuZen Analytics', path: '/products/analytics' },
-        { name: 'NeuZen Automate', path: '/products/automate' },
-        { name: 'NeuZen Connect', path: '/products/connect' }
+        { name: 'SwassAI', path: '/products/swassai' },
+        { name: 'LensAI', path: '/products/lensai' },
+        { name: 'NvisionAI', path: '/products/nvisionai' }
       ]
     },
     { name: 'Success Stories', path: '/case-studies' },

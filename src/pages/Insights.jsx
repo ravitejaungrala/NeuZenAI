@@ -1,6 +1,7 @@
 import React from 'react';
-import { Calendar, User, ArrowRight, BookOpen, TrendingUp, Lightbulb, Clock, Tag } from 'lucide-react';
+import { Calendar, User, ArrowRight, BookOpen, TrendingUp, Lightbulb, Clock, Tag, Mail, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import './Insights.css';
 
 const Insights = () => {
     const featuredArticle = {
@@ -96,71 +97,74 @@ const Insights = () => {
     };
 
     return (
-        <div className="pt-24">
+        <div className="insights-page pt-24">
             {/* Hero Section */}
-            <section className="py-20 bg-gradient-to-br from-indigo-50 to-white">
+            <section className="insights-hero">
                 <div className="container mx-auto px-6 text-center">
-                    <div className="inline-block px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full font-semibold text-sm mb-6">
-                        INSIGHTS & RESEARCH
+                    <div className="insights-hero-content fade-in">
+                        <div className="insights-badge">
+                            INSIGHTS & RESEARCH
+                        </div>
+                        <h1 className="insights-title">
+                            AI Insights & <span className="insights-title-highlight">Industry Trends</span>
+                        </h1>
+                        <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed">
+                            Stay ahead of the curve with expert analysis, research findings, and practical insights from the world of artificial intelligence. 
+                            Discover the latest trends, best practices, and innovations shaping the future of AI.
+                        </p>
+                        <Link to="#newsletter" className="btn btn-primary px-8 py-4 text-lg">
+                            Subscribe to Updates
+                        </Link>
                     </div>
-                    <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                        AI Insights & <span className="text-orange-500">Industry Trends</span>
-                    </h1>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                        Stay ahead of the curve with expert analysis, research findings, and practical insights from the world of artificial intelligence.
-                    </p>
-                    <Link to="#newsletter" className="btn btn-primary">
-                        Subscribe to Updates
-                    </Link>
                 </div>
             </section>
 
             {/* Featured Article */}
-            <section className="py-16">
+            <section className="py-20">
                 <div className="container mx-auto px-6">
-                    <div className="bg-white rounded-3xl overflow-hidden shadow-xl">
+                    <div className="featured-article fade-in">
                         <div className="md:flex">
                             <div className="md:w-1/2">
-                                <div className={`h-64 md:h-full bg-gradient-to-br ${featuredArticle.image} flex items-center justify-center`}>
-                                    <div className="text-center text-white">
-                                        <BookOpen className="w-16 h-16 mx-auto mb-4 opacity-80" />
-                                        <div className="text-sm font-semibold">Featured Article</div>
+                                <div className="featured-visual">
+                                    <div className="featured-visual-content">
+                                        <div className="featured-visual-icon">
+                                            <BookOpen className="w-10 h-10" />
+                                        </div>
+                                        <div className="text-lg font-bold">Featured Article</div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="md:w-1/2 p-8 md:p-12">
-                                <div className="flex items-center gap-4 mb-4">
-                                    <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold">
-                                        {featuredArticle.category}
-                                    </span>
-                                    <div className="flex items-center gap-4 text-sm text-gray-500">
-                                        <span className="flex items-center gap-1">
-                                            <Calendar className="w-4 h-4" />
-                                            {featuredArticle.date}
-                                        </span>
-                                        <span className="flex items-center gap-1">
-                                            <Clock className="w-4 h-4" />
-                                            {featuredArticle.readTime}
-                                        </span>
-                                    </div>
+                            <div className="md:w-1/2 featured-content">
+                                <div className="featured-category">
+                                    {featuredArticle.category}
                                 </div>
-                                <h2 className="text-3xl font-bold mb-4">{featuredArticle.title}</h2>
-                                <p className="text-gray-600 mb-6 leading-relaxed">{featuredArticle.excerpt}</p>
-                                <div className="flex flex-wrap gap-2 mb-6">
+                                <div className="featured-meta">
+                                    <span className="flex items-center gap-2">
+                                        <Calendar className="w-4 h-4" />
+                                        {featuredArticle.date}
+                                    </span>
+                                    <span className="flex items-center gap-2">
+                                        <Clock className="w-4 h-4" />
+                                        {featuredArticle.readTime}
+                                    </span>
+                                </div>
+                                <h2 className="featured-title">{featuredArticle.title}</h2>
+                                <p className="featured-excerpt">{featuredArticle.excerpt}</p>
+                                <div className="featured-tags">
                                     {featuredArticle.tags.map((tag, index) => (
-                                        <span key={index} className="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">
+                                        <span key={index} className="featured-tag">
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-                                            <User className="w-5 h-5 text-gray-500" />
+                                <div className="featured-author">
+                                    <div className="author-info">
+                                        <div className="author-avatar">
+                                            <User className="w-6 h-6" />
                                         </div>
-                                        <div>
-                                            <div className="font-semibold text-gray-900">{featuredArticle.author}</div>
-                                            <div className="text-sm text-gray-500">Senior AI Researcher</div>
+                                        <div className="author-details">
+                                            <h4>{featuredArticle.author}</h4>
+                                            <p>Senior AI Researcher</p>
                                         </div>
                                     </div>
                                     <Link to="/contact" className="btn btn-primary">
@@ -174,17 +178,13 @@ const Insights = () => {
             </section>
 
             {/* Categories Filter */}
-            <section className="py-8 bg-gray-50">
+            <section className="categories-section">
                 <div className="container mx-auto px-6">
-                    <div className="flex flex-wrap gap-4 justify-center">
+                    <div className="categories-filter">
                         {categories.map((category, index) => (
                             <button
                                 key={index}
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                                    category.active
-                                        ? 'bg-orange-500 text-white'
-                                        : 'bg-white text-gray-600 hover:bg-orange-50 hover:text-orange-600'
-                                }`}
+                                className={`category-button ${category.active ? 'active' : ''}`}
                             >
                                 {category.name} ({category.count})
                             </button>
@@ -194,117 +194,224 @@ const Insights = () => {
             </section>
 
             {/* Articles Grid */}
-            <section className="py-16 bg-gray-50">
+            <section className="articles-section">
                 <div className="container mx-auto px-6">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {articles.map((article, index) => {
-                            const colors = colorClasses[article.color];
-                            return (
-                                <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
-                                    <div className={`h-48 bg-gradient-to-br ${colors.bg} flex items-center justify-center relative`}>
-                                        <div className={`w-16 h-16 ${colors.bg} rounded-full flex items-center justify-center ${colors.text}`}>
-                                            <Lightbulb className="w-8 h-8" />
-                                        </div>
-                                        <div className="absolute top-4 left-4">
-                                            <span className={`px-2 py-1 ${colors.bg} ${colors.text} rounded text-xs font-semibold`}>
-                                                {article.category}
-                                            </span>
-                                        </div>
+                    <div className="articles-grid">
+                        {articles.map((article, index) => (
+                            <div key={index} className={`article-card ${article.color} fade-in`} style={{ animationDelay: `${index * 0.1}s` }}>
+                                <div className="article-visual">
+                                    <div className="article-category-badge">
+                                        {article.category}
                                     </div>
-                                    <div className="p-6">
-                                        <div className="flex items-center gap-4 text-xs text-gray-500 mb-3">
-                                            <span className="flex items-center gap-1">
-                                                <Calendar className="w-3 h-3" />
-                                                {article.date}
+                                    <div className="article-visual-icon">
+                                        <Lightbulb className="w-8 h-8" />
+                                    </div>
+                                </div>
+                                <div className="article-content">
+                                    <div className="article-meta">
+                                        <span className="flex items-center gap-1">
+                                            <Calendar className="w-3 h-3" />
+                                            {article.date}
+                                        </span>
+                                        <span className="flex items-center gap-1">
+                                            <Clock className="w-3 h-3" />
+                                            {article.readTime}
+                                        </span>
+                                    </div>
+                                    <h3 className="article-title">
+                                        {article.title}
+                                    </h3>
+                                    <p className="article-excerpt">
+                                        {article.excerpt}
+                                    </p>
+                                    <div className="article-tags">
+                                        {article.tags.map((tag, idx) => (
+                                            <span key={idx} className="article-tag">
+                                                {tag}
                                             </span>
-                                            <span className="flex items-center gap-1">
-                                                <Clock className="w-3 h-3" />
-                                                {article.readTime}
-                                            </span>
-                                        </div>
-                                        <h3 className="text-xl font-bold mb-3 group-hover:text-orange-500 transition-colors">
-                                            {article.title}
-                                        </h3>
-                                        <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                                            {article.excerpt}
-                                        </p>
-                                        <div className="flex flex-wrap gap-1 mb-4">
-                                            {article.tags.map((tag, idx) => (
-                                                <span key={idx} className="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                        <div className="flex items-center justify-between border-t border-gray-100 pt-4">
-                                            <div className="flex items-center gap-2">
-                                                <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center">
-                                                    <User className="w-3 h-3 text-gray-500" />
-                                                </div>
-                                                <span className="text-sm font-medium text-gray-700">{article.author}</span>
+                                        ))}
+                                    </div>
+                                    <div className="article-footer">
+                                        <div className="article-author">
+                                            <div className="article-author-avatar">
+                                                <User className="w-4 h-4" />
                                             </div>
-                                            <Link to="/contact" className={`${colors.text} hover:opacity-80 transition-opacity`}>
-                                                <ArrowRight className="w-4 h-4" />
-                                            </Link>
+                                            <span className="article-author-name">{article.author}</span>
                                         </div>
+                                        <Link to="/contact" className="article-read-more">
+                                            <ArrowRight className="w-5 h-5" />
+                                        </Link>
                                     </div>
                                 </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
-
-            {/* Stats Section */}
-            <section className="py-16">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold mb-4">Our Research Impact</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">
-                            Contributing to the global AI knowledge base through research and insights.
-                        </p>
-                    </div>
-                    <div className="grid md:grid-cols-4 gap-8">
-                        {[
-                            { icon: <BookOpen className="w-6 h-6" />, metric: "150+", label: "Articles Published" },
-                            { icon: <TrendingUp className="w-6 h-6" />, metric: "50K+", label: "Monthly Readers" },
-                            { icon: <User className="w-6 h-6" />, metric: "25+", label: "Expert Contributors" },
-                            { icon: <Tag className="w-6 h-6" />, metric: "12", label: "Research Areas" }
-                        ].map((item, index) => (
-                            <div key={index} className="text-center bg-white p-6 rounded-2xl shadow-sm">
-                                <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center text-orange-500 mx-auto mb-4">
-                                    {item.icon}
-                                </div>
-                                <div className="text-2xl font-bold text-gray-900 mb-1">{item.metric}</div>
-                                <div className="text-gray-600 text-sm">{item.label}</div>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Newsletter Signup */}
-            <section id="newsletter" className="py-16">
+            {/* Stats Section */}
+            <section className="stats-section">
                 <div className="container mx-auto px-6">
-                    <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl p-12 text-center text-white relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl opacity-10 transform translate-x-1/2 -translate-y-1/2"></div>
-                        <div className="relative z-10">
-                            <h2 className="text-4xl font-bold mb-4">Stay Informed with AI Insights</h2>
-                            <p className="text-indigo-100 mb-8 max-w-2xl mx-auto text-lg">
-                                Get the latest AI research, industry trends, and expert analysis delivered to your inbox. Join 10,000+ professionals staying ahead of the curve.
-                            </p>
-                            <div className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
-                                <input 
-                                    type="email" 
-                                    placeholder="Enter your email address" 
-                                    className="flex-1 px-6 py-4 rounded-full bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-indigo-200 focus:outline-none focus:bg-opacity-30 backdrop-blur-sm"
-                                />
-                                <button className="btn bg-white text-indigo-600 hover:bg-gray-100 whitespace-nowrap px-8">
-                                    Subscribe Now
-                                </button>
+                    <div className="stats-hero">
+                        <div className="stats-hero-content">
+                            <div className="stats-badge">
+                                RESEARCH IMPACT
                             </div>
-                            <p className="text-indigo-200 text-sm mt-4">
-                                No spam, unsubscribe anytime. Read our privacy policy.
+                            <h2 className="stats-title">
+                                Driving AI Innovation Through <span className="stats-title-highlight">Research Excellence</span>
+                            </h2>
+                            <p className="stats-description">
+                                Contributing to the global AI knowledge base through comprehensive research, expert insights, 
+                                and thought leadership that shapes the future of artificial intelligence across industries worldwide.
                             </p>
+                        </div>
+                    </div>
+                    
+                    <div className="stats-grid">
+                        {[
+                            { 
+                                icon: <BookOpen className="w-10 h-10" />, 
+                                metric: "150+", 
+                                label: "Articles Published",
+                                description: "In-depth research papers and industry insights",
+                                color: "orange"
+                            },
+                            { 
+                                icon: <TrendingUp className="w-10 h-10" />, 
+                                metric: "50K+", 
+                                label: "Monthly Readers",
+                                description: "Global professionals staying informed",
+                                color: "green"
+                            },
+                            { 
+                                icon: <User className="w-10 h-10" />, 
+                                metric: "25+", 
+                                label: "Expert Contributors",
+                                description: "Leading AI researchers and practitioners",
+                                color: "blue"
+                            },
+                            { 
+                                icon: <Tag className="w-10 h-10" />, 
+                                metric: "12", 
+                                label: "Research Areas",
+                                description: "Specialized domains of AI expertise",
+                                color: "purple"
+                            }
+                        ].map((item, index) => (
+                            <div key={index} className={`stat-card ${item.color} slide-up`} style={{ animationDelay: `${index * 0.1}s` }}>
+                                <div className="stat-visual">
+                                    <div className="stat-icon">
+                                        {item.icon}
+                                    </div>
+                                    <div className="stat-glow"></div>
+                                </div>
+                                <div className="stat-content">
+                                    <div className="stat-metric">{item.metric}</div>
+                                    <div className="stat-label">{item.label}</div>
+                                    <div className="stat-description">{item.description}</div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    
+                    <div className="research-highlights">
+                        <div className="research-highlight-card">
+                            <div className="research-highlight-icon">
+                                <Lightbulb className="w-8 h-8" />
+                            </div>
+                            <div className="research-highlight-content">
+                                <h3>Latest Research</h3>
+                                <p>Breakthrough findings in neural architecture optimization published in top-tier AI conferences</p>
+                            </div>
+                        </div>
+                        <div className="research-highlight-card">
+                            <div className="research-highlight-icon">
+                                <TrendingUp className="w-8 h-8" />
+                            </div>
+                            <div className="research-highlight-content">
+                                <h3>Industry Impact</h3>
+                                <p>Our research has been cited 500+ times and implemented by Fortune 500 companies globally</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Newsletter Signup */}
+            <section id="newsletter" className="newsletter-section">
+                <div className="container mx-auto px-6">
+                    <div className="newsletter-container">
+                        <div className="newsletter-visual">
+                            <div className="newsletter-visual-content">
+                                <div className="newsletter-visual-icon">
+                                    <Mail className="w-12 h-12" />
+                                </div>
+                                <div className="newsletter-visual-elements">
+                                    <div className="newsletter-element"></div>
+                                    <div className="newsletter-element"></div>
+                                    <div className="newsletter-element"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div className="newsletter-content">
+                            <div className="newsletter-badge">
+                                STAY UPDATED
+                            </div>
+                            <h2 className="newsletter-title">
+                                Stay Informed with <span className="newsletter-title-highlight">AI Insights</span>
+                            </h2>
+                            <p className="newsletter-description">
+                                Get the latest AI research, industry trends, and expert analysis delivered to your inbox. 
+                                Join 10,000+ professionals staying ahead of the curve with cutting-edge insights and practical knowledge.
+                            </p>
+                            
+                            <div className="newsletter-benefits">
+                                <div className="newsletter-benefit">
+                                    <div className="newsletter-benefit-icon">
+                                        <CheckCircle className="w-5 h-5" />
+                                    </div>
+                                    <span>Weekly AI research summaries</span>
+                                </div>
+                                <div className="newsletter-benefit">
+                                    <div className="newsletter-benefit-icon">
+                                        <CheckCircle className="w-5 h-5" />
+                                    </div>
+                                    <span>Exclusive industry insights</span>
+                                </div>
+                                <div className="newsletter-benefit">
+                                    <div className="newsletter-benefit-icon">
+                                        <CheckCircle className="w-5 h-5" />
+                                    </div>
+                                    <span>Early access to new content</span>
+                                </div>
+                            </div>
+                            
+                            <div className="newsletter-form">
+                                <div className="newsletter-input-group">
+                                    <input 
+                                        type="email" 
+                                        placeholder="Enter your email address" 
+                                        className="newsletter-input"
+                                    />
+                                    <button className="newsletter-button">
+                                        <Mail className="w-5 h-5" />
+                                        Subscribe Now
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div className="newsletter-social-proof">
+                                <div className="newsletter-avatars">
+                                    <div className="newsletter-avatar"></div>
+                                    <div className="newsletter-avatar"></div>
+                                    <div className="newsletter-avatar"></div>
+                                    <div className="newsletter-avatar-count">+10K</div>
+                                </div>
+                                <p className="newsletter-disclaimer">
+                                    Join 10,000+ AI professionals • No spam, unsubscribe anytime
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
