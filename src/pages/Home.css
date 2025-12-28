@@ -143,8 +143,8 @@
 
 .homepage-service-card {
   background: white;
-  border-radius: 20px;
-  padding: 32px;
+  border-radius: 16px;
+  padding: 24px;
   position: relative;
   overflow: hidden;
   border: 1px solid #e5e7eb;
@@ -152,6 +152,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  max-height: 320px;
 }
 
 .homepage-service-card:hover {
@@ -175,13 +176,13 @@
 }
 
 .homepage-service-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 16px;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   transition: all 0.3s ease;
   position: relative;
   z-index: 2;
@@ -201,9 +202,9 @@
 }
 
 .homepage-service-title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   color: #111827;
   transition: color 0.3s ease;
 }
@@ -214,9 +215,10 @@
 
 .homepage-service-desc {
   color: #6b7280;
-  margin-bottom: 24px;
-  line-height: 1.7;
+  margin-bottom: 16px;
+  line-height: 1.6;
   flex: 1;
+  font-size: 0.875rem;
 }
 
 .homepage-service-features {
@@ -417,17 +419,17 @@
 
 .homepage-industries-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 32px;
-  margin-bottom: 80px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 64px;
   position: relative;
   z-index: 1;
 }
 
 .homepage-industry-card {
   background: white;
-  border-radius: 24px;
-  padding: 32px;
+  border-radius: 20px;
+  padding: 24px;
   position: relative;
   overflow: hidden;
   border: 1px solid #e5e7eb;
@@ -479,9 +481,9 @@
 }
 
 .homepage-industry-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -517,9 +519,9 @@
 }
 
 .homepage-industry-title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   color: #111827;
   transition: color 0.3s ease;
 }
@@ -530,19 +532,20 @@
 
 .homepage-industry-desc {
   color: #6b7280;
-  margin-bottom: 24px;
-  line-height: 1.7;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  font-size: 0.875rem;
 }
 
 .homepage-industry-features {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .homepage-features-title {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: #374151;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .homepage-features-list {
@@ -570,17 +573,17 @@
 }
 
 .homepage-industry-achievements {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .homepage-achievements-title {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: #374151;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .homepage-achievements-list {
