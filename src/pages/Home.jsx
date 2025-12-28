@@ -1,5 +1,6 @@
-import { ArrowRight, Brain, Database, Shield, Cloud, Zap, Code, BarChart, Users, Star, CheckCircle, Heart, Building2, Factory, ShoppingCart } from 'lucide-react';
+import { ArrowRight, Brain, Database, Shield, Cloud, Zap, Code, BarChart, Users, Star, CheckCircle, Heart, Building2, Factory, ShoppingCart, Sparkles, TrendingUp, Award, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import './Home.css';
 
 const Home = () => {
     const clients = [
@@ -71,248 +72,228 @@ const Home = () => {
 
     return (
         <>
-            {/* Hero Section - Centered Layout with Background Image and Gap */}
-            <section 
-                className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24"
-                style={{
-                    backgroundImage: 'url(/main.webp)',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat'
-                }}
-            >
-                {/* Dark overlay for better text readability and navbar visibility */}
-                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-
-                <div className="container mx-auto px-6 text-center relative z-10">
-                    <h1 className="text-5xl md:text-7xl font-bold font-heading leading-tight mb-6 text-white drop-shadow-lg">
+            {/* Hero Section */}
+            <section className="home-hero">
+                <div className="home-hero-content fade-in">
+                    <h1 className="home-hero-title">
                         Next-Generation <br />
-                        <span className="text-orange-500">AI Solutions</span>
+                        <span style={{ color: '#f97316' }}>AI Solutions</span>
                     </h1>
-                    <p className="text-xl text-white mb-8 max-w-3xl mx-auto drop-shadow-lg font-semibold">
+                    <p className="home-hero-subtitle">
                         Empowering businesses with cutting-edge AI product development and intelligent services that drive innovation and accelerate growth.
                     </p>
-                    <div className="flex justify-center">
-                        <Link to="/services" className="btn btn-primary shadow-lg">
-                            START YOUR AI JOURNEY
-                        </Link>
+                    <Link to="/services" className="home-hero-cta">
+                        START YOUR AI JOURNEY
+                        <ArrowRight className="w-5 h-5" />
+                    </Link>
+                </div>
+            </section>
+
+            {/* Our Story Section */}
+            <section className="homepage-story-section">
+                <div className="homepage-main-container">
+                    <div className="homepage-story-content fade-in">
+                        <div className="homepage-story-text">
+                            <div className="homepage-badge-green">
+                                <Sparkles className="w-4 h-4" />
+                                OUR STORY
+                            </div>
+                            <h2 className="homepage-story-title">Pioneering the Future of AI Innovation</h2>
+                            <p className="homepage-story-description">
+                                Founded by visionary technologists and AI researchers, NeuZenAI emerged from a simple yet powerful belief: 
+                                artificial intelligence should amplify human potential, not replace it.
+                            </p>
+                            <p className="homepage-story-description">
+                                Today, with offices spanning from Silicon Valley to Hyderabad's T-Hub, we've grown into a trusted partner 
+                                for Fortune 500 companies and innovative startups alike.
+                            </p>
+                            
+                            <div className="homepage-story-highlights">
+                                <div className="homepage-highlight-item">
+                                    <div className="homepage-highlight-icon">
+                                        <Award className="w-6 h-6" />
+                                    </div>
+                                    <div className="homepage-highlight-content">
+                                        <h4 className="homepage-highlight-title">Industry Recognition</h4>
+                                        <p className="homepage-highlight-desc">Award-winning AI solutions recognized globally</p>
+                                    </div>
+                                </div>
+                                <div className="homepage-highlight-item">
+                                    <div className="homepage-highlight-icon">
+                                        <Globe className="w-6 h-6" />
+                                    </div>
+                                    <div className="homepage-highlight-content">
+                                        <h4 className="homepage-highlight-title">Global Impact</h4>
+                                        <p className="homepage-highlight-desc">Serving clients across 25+ countries</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <Link to="/about" className="homepage-story-cta">
+                                Learn More About Us
+                                <ArrowRight className="w-5 h-5" />
+                            </Link>
+                        </div>
+                        
+                        {/* Right Side - Story Image */}
+                        <div className="homepage-story-image">
+                            <img 
+                                src="/story.png" 
+                                alt="NeuZenAI Story - AI Innovation Journey" 
+                                className="homepage-story-img"
+                            />
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* What We Do Section - Horizontal Scrolling */}
-            <section className="py-24 bg-white">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <div className="inline-block px-4 py-2 bg-green-100 text-green-600 rounded-full font-semibold text-sm mb-6">
+            {/* What We Do Section - Enhanced */}
+            <section className="homepage-services-section">
+                <div className="homepage-main-container">
+                    <div className="homepage-section-header fade-in">
+                        <div className="homepage-badge-green">
+                            <Sparkles className="w-4 h-4" />
                             OUR EXPERTISE
                         </div>
-                        <h2 className="text-4xl font-bold mb-4 text-orange-500">What We Do</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">We deliver cutting-edge AI solutions that transform businesses and drive innovation across industries.</p>
+                        <h2 className="homepage-main-title">What We Do</h2>
+                        <p className="homepage-main-description">
+                            We deliver cutting-edge AI solutions that transform businesses and drive innovation across industries with measurable results.
+                        </p>
                     </div>
 
-                    {/* Horizontal Scrolling Layout */}
-                    <div className="relative overflow-hidden">
-                        <div className="scroll-fade-left scroll-fade-right">
-                            <div className="flex animate-scroll">
-                                {/* First set */}
-                                {[
-                                    { 
-                                        icon: <BarChart className="w-12 h-12" />, 
-                                        title: "Advanced Analytics", 
-                                        desc: "Transform raw data into actionable insights with sophisticated statistical models and predictive analytics solutions.",
-                                        features: ["Predictive Modeling", "Statistical Analysis", "Data Visualization", "Business Intelligence"]
-                                    },
-                                    { 
-                                        icon: <Brain className="w-12 h-12" />, 
-                                        title: "Custom AI Solutions", 
-                                        desc: "Tailored artificial intelligence systems designed specifically for your business needs and industry requirements.",
-                                        features: ["Custom ML Models", "Neural Networks", "Computer Vision", "NLP Solutions"]
-                                    },
-                                    { 
-                                        icon: <Users className="w-12 h-12" />, 
-                                        title: "AI Strategic Consulting", 
-                                        desc: "Expert guidance on AI adoption, implementation strategies, and digital transformation roadmaps for your organization.",
-                                        features: ["Strategy Development", "AI Roadmapping", "Technology Assessment", "Change Management"]
-                                    },
-                                    { 
-                                        icon: <Zap className="w-12 h-12" />, 
-                                        title: "Intelligent Automation", 
-                                        desc: "Streamline operations with smart automation solutions that learn and adapt to optimize business processes.",
-                                        features: ["Process Automation", "RPA Implementation", "Workflow Optimization", "Smart Scheduling"]
-                                    }
-                                ].map((item, index) => (
-                                    <div key={index} className="flex-shrink-0 mx-4 w-80">
-                                        <div className="relative p-6 bg-white border-2 border-gray-200 hover:shadow-xl transition-all duration-500 hover:border-orange-300 hover:-translate-y-2 rounded-2xl h-full group">
-                                            {/* Icon */}
-                                            <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center text-gray-600 mb-4 group-hover:scale-105 transition-all duration-300 group-hover:bg-orange-50 group-hover:text-orange-500">
-                                                {item.icon}
-                                            </div>
-                                            
-                                            <h3 className="text-lg font-bold mb-3 text-gray-900 group-hover:text-orange-600 transition-colors duration-300">{item.title}</h3>
-                                            <p className="text-gray-600 mb-4 leading-relaxed text-sm group-hover:text-gray-700">{item.desc}</p>
-                                            
-                                            {/* Features */}
-                                            <ul className="space-y-2 mb-4">
-                                                {item.features.map((feature, idx) => (
-                                                    <li key={idx} className="flex items-center gap-3 text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-gray-400 group-hover:bg-orange-400 transition-colors duration-300"></div>
-                                                        <span className="font-medium">{feature}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                            
-                                            {/* CTA Button */}
-                                            <Link to="/services" className="inline-flex items-center gap-2 text-gray-700 font-semibold hover:gap-4 transition-all duration-300 hover:underline text-sm group-hover:text-orange-600">
-                                                Learn More 
-                                                <ArrowRight className="w-4 h-4 hover:translate-x-1 transition-transform duration-300" />
-                                            </Link>
-                                        </div>
-                                    </div>
-                                )).concat(
-                                    // Duplicate set for seamless loop
-                                    [
-                                        { 
-                                            icon: <BarChart className="w-12 h-12" />, 
-                                            title: "Advanced Analytics", 
-                                            desc: "Transform raw data into actionable insights with sophisticated statistical models and predictive analytics solutions.",
-                                            features: ["Predictive Modeling", "Statistical Analysis", "Data Visualization", "Business Intelligence"]
-                                        },
-                                        { 
-                                            icon: <Brain className="w-12 h-12" />, 
-                                            title: "Custom AI Solutions", 
-                                            desc: "Tailored artificial intelligence systems designed specifically for your business needs and industry requirements.",
-                                            features: ["Custom ML Models", "Neural Networks", "Computer Vision", "NLP Solutions"]
-                                        },
-                                        { 
-                                            icon: <Users className="w-12 h-12" />, 
-                                            title: "AI Strategic Consulting", 
-                                            desc: "Expert guidance on AI adoption, implementation strategies, and digital transformation roadmaps for your organization.",
-                                            features: ["Strategy Development", "AI Roadmapping", "Technology Assessment", "Change Management"]
-                                        },
-                                        { 
-                                            icon: <Zap className="w-12 h-12" />, 
-                                            title: "Intelligent Automation", 
-                                            desc: "Streamline operations with smart automation solutions that learn and adapt to optimize business processes.",
-                                            features: ["Process Automation", "RPA Implementation", "Workflow Optimization", "Smart Scheduling"]
-                                        }
-                                    ].map((item, index) => (
-                                        <div key={`duplicate-${index}`} className="flex-shrink-0 mx-4 w-80">
-                                            <div className="relative p-6 bg-white border-2 border-gray-200 hover:shadow-xl transition-all duration-500 hover:border-orange-300 hover:-translate-y-2 rounded-2xl h-full group">
-                                                {/* Icon */}
-                                                <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center text-gray-600 mb-4 group-hover:scale-105 transition-all duration-300 group-hover:bg-orange-50 group-hover:text-orange-500">
-                                                    {item.icon}
-                                                </div>
-                                                
-                                                <h3 className="text-lg font-bold mb-3 text-gray-900 group-hover:text-orange-600 transition-colors duration-300">{item.title}</h3>
-                                                <p className="text-gray-600 mb-4 leading-relaxed text-sm group-hover:text-gray-700">{item.desc}</p>
-                                                
-                                                {/* Features */}
-                                                <ul className="space-y-2 mb-4">
-                                                    {item.features.map((feature, idx) => (
-                                                        <li key={idx} className="flex items-center gap-3 text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
-                                                            <div className="w-1.5 h-1.5 rounded-full bg-gray-400 group-hover:bg-orange-400 transition-colors duration-300"></div>
-                                                            <span className="font-medium">{feature}</span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                                
-                                                {/* CTA Button */}
-                                                <Link to="/services" className="inline-flex items-center gap-2 text-gray-700 font-semibold hover:gap-4 transition-all duration-300 hover:underline text-sm group-hover:text-orange-600">
-                                                    Learn More 
-                                                    <ArrowRight className="w-4 h-4 hover:translate-x-1 transition-transform duration-300" />
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    ))
-                                )}
+                    {/* Enhanced Service Cards Grid */}
+                    <div className="homepage-services-grid fade-in">
+                        {[
+                            { 
+                                icon: <BarChart className="w-8 h-8" />, 
+                                title: "Advanced Analytics", 
+                                desc: "Transform raw data into actionable insights with sophisticated statistical models and predictive analytics solutions that drive business growth.",
+                                features: ["Predictive Modeling", "Statistical Analysis", "Data Visualization", "Business Intelligence"],
+                                color: "blue",
+                                gradient: "from-blue-500 to-blue-600"
+                            },
+                            { 
+                                icon: <Brain className="w-8 h-8" />, 
+                                title: "Custom AI Solutions", 
+                                desc: "Tailored artificial intelligence systems designed specifically for your business needs and industry requirements with proven ROI.",
+                                features: ["Custom ML Models", "Neural Networks", "Computer Vision", "NLP Solutions"],
+                                color: "purple",
+                                gradient: "from-purple-500 to-purple-600"
+                            },
+                            { 
+                                icon: <Users className="w-8 h-8" />, 
+                                title: "AI Strategic Consulting", 
+                                desc: "Expert guidance on AI adoption, implementation strategies, and digital transformation roadmaps for sustainable competitive advantage.",
+                                features: ["Strategy Development", "AI Roadmapping", "Technology Assessment", "Change Management"],
+                                color: "green",
+                                gradient: "from-green-500 to-green-600"
+                            },
+                            { 
+                                icon: <Zap className="w-8 h-8" />, 
+                                title: "Intelligent Automation", 
+                                desc: "Streamline operations with smart automation solutions that learn and adapt to optimize business processes and reduce costs.",
+                                features: ["Process Automation", "RPA Implementation", "Workflow Optimization", "Smart Scheduling"],
+                                color: "orange",
+                                gradient: "from-orange-500 to-orange-600"
+                            }
+                        ].map((service, index) => (
+                            <div key={index} className="homepage-service-card fade-in-stagger">
+                                {/* Background Gradient */}
+                                <div className={`homepage-service-bg bg-gradient-to-br ${service.gradient}`}></div>
+                                
+                                {/* Service Icon */}
+                                <div className={`homepage-service-icon bg-${service.color}-50 text-${service.color}-500`}>
+                                    {service.icon}
+                                </div>
+                                
+                                {/* Service Content */}
+                                <div className="homepage-service-content">
+                                    <h3 className="homepage-service-title">{service.title}</h3>
+                                    <p className="homepage-service-desc">{service.desc}</p>
+                                    
+                                    {/* Service Features */}
+                                    <ul className="homepage-service-features">
+                                        {service.features.map((feature, idx) => (
+                                            <li key={idx} className="homepage-service-feature">
+                                                <div className={`homepage-feature-dot bg-${service.color}-400`}></div>
+                                                <span>{feature}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    
+                                    {/* Service CTA */}
+                                    <Link to="/services" className={`homepage-service-cta text-${service.color}-600 hover:text-${service.color}-700`}>
+                                        Learn More 
+                                        <ArrowRight className="w-4 h-4" />
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* Technology Stack Section - Enhanced */}
-            <section className="py-24 bg-slate-50 relative overflow-hidden">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-5">
-                    <div className="absolute top-0 left-0 w-full h-full" style={{
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                    }}></div>
-                </div>
-
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="text-center mb-16">
-                        <div className="inline-block px-4 py-2 bg-green-100 text-green-600 rounded-full font-semibold text-sm mb-6">
+            {/* Technology Stack Section */}
+            <section className="home-section home-section-gray">
+                <div className="home-container">
+                    <div className="home-section-header fade-in">
+                        <div className="home-section-badge">
                             CUTTING-EDGE TECHNOLOGY
                         </div>
-                        <h2 className="text-4xl font-bold mb-4 text-orange-500">Our Technology Stack</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">
+                        <h2 className="home-section-title">Our Technology Stack</h2>
+                        <p className="home-section-description">
                             We leverage the most advanced technologies and frameworks to deliver robust, scalable AI solutions.
                         </p>
                     </div>
 
-                    {/* Technology Categories with Icons and Animations */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                    {/* Technology Categories */}
+                    <div className="home-tech-categories fade-in">
                         {[
                             {
                                 category: "Machine Learning",
                                 icon: <Brain className="w-8 h-8" />,
                                 techs: ["TensorFlow", "PyTorch", "Scikit-learn", "Keras", "XGBoost"],
-                                color: "blue",
-                                gradient: "from-blue-500 to-blue-600"
+                                color: "blue"
                             },
                             {
                                 category: "Cloud & DevOps",
                                 icon: <Cloud className="w-8 h-8" />,
                                 techs: ["AWS", "Google Cloud", "Azure", "Docker", "Kubernetes"],
-                                color: "green",
-                                gradient: "from-green-500 to-green-600"
+                                color: "green"
                             },
                             {
                                 category: "Programming",
                                 icon: <Code className="w-8 h-8" />,
                                 techs: ["Python", "JavaScript", "Java", "R", "Scala"],
-                                color: "purple",
-                                gradient: "from-purple-500 to-purple-600"
+                                color: "purple"
                             },
                             {
                                 category: "Data & Analytics",
                                 icon: <Database className="w-8 h-8" />,
                                 techs: ["Apache Spark", "Elasticsearch", "PostgreSQL", "MongoDB", "Tableau"],
-                                color: "orange",
-                                gradient: "from-orange-500 to-orange-600"
+                                color: "orange"
                             }
                         ].map((category, index) => (
-                            <div key={index} className="group relative">
-                                {/* Background gradient */}
-                                <div className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}></div>
+                            <div key={index} className="home-tech-category">
+                                <div className={`home-tech-icon bg-${category.color}-50 text-${category.color}-500`}>
+                                    {category.icon}
+                                </div>
                                 
-                                {/* Main card */}
-                                <div className="relative bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 group-hover:-translate-y-2 border border-gray-100">
-                                    {/* Icon */}
-                                    <div className={`w-16 h-16 bg-${category.color}-50 text-${category.color}-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                                        {category.icon}
-                                    </div>
-                                    
-                                    {/* Category title */}
-                                    <h3 className="text-lg font-bold mb-4 text-gray-900">{category.category}</h3>
-                                    
-                                    {/* Technology tags */}
-                                    <div className="space-y-2">
-                                        {category.techs.map((tech, techIndex) => (
-                                            <div key={techIndex} className={`inline-block px-3 py-1 bg-${category.color}-50 text-${category.color}-600 rounded-full text-xs font-medium mr-2 mb-2 hover:bg-${category.color}-100 transition-colors duration-200`}>
-                                                {tech}
-                                            </div>
-                                        ))}
-                                    </div>
+                                <h3 className="home-tech-category-title">{category.category}</h3>
+                                
+                                <div className="home-tech-tags">
+                                    {category.techs.map((tech, techIndex) => (
+                                        <div key={techIndex} className={`home-tech-tag bg-${category.color}-50 text-${category.color}-600`}>
+                                            {tech}
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         ))}
                     </div>
 
                     {/* Scrolling Technology Showcase */}
-                    <div className="relative overflow-hidden">
+                    <div className="home-services-scroll">
                         <div className="scroll-fade-left scroll-fade-right">
                             <div className="flex animate-scroll">
                                 {/* First set */}
@@ -367,232 +348,182 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Industries We Serve - Enhanced Horizontal Scrolling */}
-            <section className="py-24 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden">
-                {/* Enhanced Animated Background Elements */}
-                <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-l from-orange-100 to-transparent rounded-full opacity-30 animate-pulse"></div>
-                <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-r from-blue-100 to-transparent rounded-full opacity-30 animate-pulse" style={{ animationDelay: '2s' }}></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-green-100 to-purple-100 rounded-full opacity-20 animate-pulse" style={{ animationDelay: '4s' }}></div>
-
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="text-center mb-16">
-                        <div className="inline-block px-6 py-3 bg-green-500 text-white rounded-full font-semibold text-sm mb-6 shadow-lg animate-bounce">
-                            🌍 DIVERSE EXPERTISE
+            {/* Industries We Serve Section - Enhanced */}
+            <section className="homepage-industries-section">
+                <div className="homepage-main-container">
+                    <div className="homepage-section-header fade-in">
+                        <div className="homepage-badge-orange animate-bounce">
+                            <Globe className="w-4 h-4" />
+                            DIVERSE EXPERTISE
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-orange-500 drop-shadow-lg">Industries We Serve</h2>
-                        <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
-                            Transforming businesses across diverse sectors with tailored AI solutions that drive innovation and accelerate growth.
+                        <h2 className="homepage-main-title">Industries We Serve</h2>
+                        <p className="homepage-main-description">
+                            Transforming businesses across diverse sectors with tailored AI solutions that drive innovation, accelerate growth, and deliver measurable ROI.
                         </p>
                     </div>
 
-                    {/* Enhanced Horizontal Scrolling Industries */}
-                    <div className="relative overflow-hidden mb-16">
-                        <div className="scroll-fade-left scroll-fade-right">
-                            <div className="flex animate-scroll-reverse">
-                                {/* First set */}
-                                {[
-                                    { 
-                                        icon: <Users className="w-12 h-12" />, 
-                                        name: "Media and Entertainment", 
-                                        desc: "Content recommendation systems, audience analytics, and personalized streaming experiences that engage viewers", 
-                                        stats: "10M+ Content Views",
-                                        features: ["Content AI", "Audience Analytics", "Recommendation Engine", "Content Moderation"],
-                                        bgPattern: "🎬",
-                                        color: "blue"
-                                    },
-                                    { 
-                                        icon: <Heart className="w-12 h-12" />, 
-                                        name: "Health and Life Insurance", 
-                                        desc: "Risk assessment, claims processing automation, and predictive health analytics for better coverage decisions", 
-                                        stats: "500K+ Policies Processed",
-                                        features: ["Risk Assessment", "Claims Automation", "Health Predictions", "Fraud Detection"],
-                                        bgPattern: "🏥",
-                                        color: "red"
-                                    },
-                                    { 
-                                        icon: <Factory className="w-12 h-12" />, 
-                                        name: "Transportation and Logistics", 
-                                        desc: "Route optimization, fleet management, and supply chain intelligence for efficient operations", 
-                                        stats: "1000+ Fleet Vehicles",
-                                        features: ["Route Optimization", "Fleet Management", "Supply Chain AI", "Predictive Maintenance"],
-                                        bgPattern: "🚛",
-                                        color: "green"
-                                    },
-                                    { 
-                                        icon: <ShoppingCart className="w-12 h-12" />, 
-                                        name: "E-commerce and Retail", 
-                                        desc: "Personalized shopping experiences, inventory optimization, and customer behavior analysis for increased sales", 
-                                        stats: "2M+ Customers Served",
-                                        features: ["Personalization", "Inventory AI", "Customer Analytics", "Price Optimization"],
-                                        bgPattern: "🛒",
-                                        color: "orange"
-                                    }
-                                ].map((industry, index) => {
-                                    const colorConfig = colorClasses[industry.color] || colorClasses.blue;
+                    {/* Enhanced Industries Grid */}
+                    <div className="homepage-industries-grid fade-in">
+                        {[
+                            { 
+                                icon: <Users className="w-10 h-10" />, 
+                                name: "Media & Entertainment", 
+                                desc: "Content recommendation systems, audience analytics, and personalized streaming experiences that engage millions of viewers worldwide.", 
+                                stats: "10M+ Content Views",
+                                features: ["Content AI", "Audience Analytics", "Recommendation Engine", "Content Moderation"],
+                                bgPattern: "🎬",
+                                color: "blue",
+                                gradient: "from-blue-500 to-indigo-600",
+                                achievements: ["40% Engagement Boost", "Real-time Analytics", "Global Scale"]
+                            },
+                            { 
+                                icon: <Heart className="w-10 h-10" />, 
+                                name: "Healthcare & Insurance", 
+                                desc: "Risk assessment, claims processing automation, and predictive health analytics for better coverage decisions and patient outcomes.", 
+                                stats: "500K+ Policies Processed",
+                                features: ["Risk Assessment", "Claims Automation", "Health Predictions", "Fraud Detection"],
+                                bgPattern: "🏥",
+                                color: "red",
+                                gradient: "from-red-500 to-pink-600",
+                                achievements: ["99.2% Accuracy", "60% Faster Processing", "HIPAA Compliant"]
+                            },
+                            { 
+                                icon: <Factory className="w-10 h-10" />, 
+                                name: "Transportation & Logistics", 
+                                desc: "Route optimization, fleet management, and supply chain intelligence for efficient operations and cost reduction.", 
+                                stats: "1000+ Fleet Vehicles",
+                                features: ["Route Optimization", "Fleet Management", "Supply Chain AI", "Predictive Maintenance"],
+                                bgPattern: "🚛",
+                                color: "green",
+                                gradient: "from-green-500 to-emerald-600",
+                                achievements: ["30% Cost Savings", "Real-time Tracking", "Carbon Footprint Reduction"]
+                            },
+                            { 
+                                icon: <ShoppingCart className="w-10 h-10" />, 
+                                name: "E-commerce & Retail", 
+                                desc: "Personalized shopping experiences, inventory optimization, and customer behavior analysis for increased sales and loyalty.", 
+                                stats: "2M+ Customers Served",
+                                features: ["Personalization", "Inventory AI", "Customer Analytics", "Price Optimization"],
+                                bgPattern: "🛒",
+                                color: "purple",
+                                gradient: "from-purple-500 to-violet-600",
+                                achievements: ["45% Revenue Growth", "Dynamic Pricing", "Omnichannel Experience"]
+                            },
+                            { 
+                                icon: <Building2 className="w-10 h-10" />, 
+                                name: "Financial Services", 
+                                desc: "Advanced fraud detection, algorithmic trading, credit scoring, and regulatory compliance solutions for modern banking.", 
+                                stats: "1B+ Transactions Analyzed",
+                                features: ["Fraud Detection", "Credit Scoring", "Algorithmic Trading", "Compliance AI"],
+                                bgPattern: "🏦",
+                                color: "yellow",
+                                gradient: "from-yellow-500 to-orange-600",
+                                achievements: ["99.8% Fraud Detection", "Regulatory Compliance", "Risk Mitigation"]
+                            },
+                            { 
+                                icon: <Zap className="w-10 h-10" />, 
+                                name: "Energy & Utilities", 
+                                desc: "Smart grid optimization, predictive maintenance, energy consumption forecasting, and renewable energy management.", 
+                                stats: "500+ Smart Grids",
+                                features: ["Grid Optimization", "Energy Forecasting", "Predictive Maintenance", "Renewable Integration"],
+                                bgPattern: "⚡",
+                                color: "teal",
+                                gradient: "from-teal-500 to-cyan-600",
+                                achievements: ["25% Energy Savings", "Grid Stability", "Sustainability Goals"]
+                            }
+                        ].map((industry, index) => (
+                            <div key={index} className="homepage-industry-card fade-in-stagger">
+                                {/* Background Pattern */}
+                                <div className="homepage-industry-pattern">
+                                    {industry.bgPattern}
+                                </div>
+                                
+                                {/* Gradient Background */}
+                                <div className={`homepage-industry-bg bg-gradient-to-br ${industry.gradient}`}></div>
+                                
+                                {/* Industry Header */}
+                                <div className="homepage-industry-header">
+                                    <div className={`homepage-industry-icon bg-${industry.color}-50 text-${industry.color}-600`}>
+                                        {industry.icon}
+                                    </div>
+                                    <div className="homepage-industry-badge">
+                                        <TrendingUp className="w-3 h-3" />
+                                        <span>{industry.stats}</span>
+                                    </div>
+                                </div>
+                                
+                                {/* Industry Content */}
+                                <div className="homepage-industry-content">
+                                    <h3 className="homepage-industry-title">{industry.name}</h3>
+                                    <p className="homepage-industry-desc">{industry.desc}</p>
                                     
-                                    return (
-                                        <div key={index} className="flex-shrink-0 mx-4 w-80">
-                                            <div className="group relative overflow-hidden transform transition-all duration-500 hover:scale-105">
-                                                {/* Enhanced Background Pattern */}
-                                                <div className="absolute top-4 right-4 text-4xl opacity-10 group-hover:opacity-30 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
-                                                    {industry.bgPattern}
-                                                </div>
-                                                
-                                                {/* Enhanced Card with Gradient Border */}
-                                                <div className="relative p-6 border-2 border-gray-200 rounded-2xl bg-white hover:shadow-2xl transition-all duration-500 hover:border-orange-300 hover:-translate-y-3 h-full group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-gray-50">
-                                                    {/* Enhanced Icon with Glow Effect */}
-                                                    <div className={`w-14 h-14 ${colorConfig.bg} rounded-xl flex items-center justify-center ${colorConfig.text} mb-4 group-hover:scale-110 transition-all duration-300 relative z-10 group-hover:shadow-lg`}>
-                                                        {industry.icon}
-                                                    </div>
-                                                    
-                                                    {/* Content */}
-                                                    <h3 className="text-lg font-bold mb-3 text-gray-900 relative z-10 group-hover:text-orange-600 transition-colors duration-300">{industry.name}</h3>
-                                                    <p className="text-gray-600 mb-3 leading-relaxed text-sm relative z-10 group-hover:text-gray-700">{industry.desc}</p>
-                                                    
-                                                    {/* Enhanced Stats Badge */}
-                                                    <div className="inline-flex items-center px-3 py-1 bg-gray-50 text-gray-600 rounded-full text-xs font-semibold mb-3 relative z-10 group-hover:bg-orange-50 group-hover:text-orange-600 transition-all duration-300">
-                                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mr-2 group-hover:bg-orange-400"></div>
-                                                        {industry.stats}
-                                                    </div>
-                                                    
-                                                    {/* Enhanced Features List */}
-                                                    <ul className="space-y-1 mb-3 relative z-10">
-                                                        {industry.features.map((feature, idx) => (
-                                                            <li key={idx} className="flex items-center gap-2 text-xs text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
-                                                                <div className="w-1 h-1 rounded-full bg-gray-400 group-hover:bg-orange-400 transition-colors duration-300"></div>
-                                                                <span className="font-medium">{feature}</span>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                    
-                                                    {/* Enhanced CTA with Hover Effect */}
-                                                    <Link to="/industries" className="inline-flex items-center gap-2 text-gray-700 font-semibold hover:gap-4 transition-all duration-300 hover:underline text-sm relative z-10 group-hover:text-orange-600">
-                                                        Explore Solutions
-                                                        <ArrowRight className="w-3 h-3 hover:translate-x-1 transition-transform duration-300" />
-                                                    </Link>
-                                                </div>
-                                            </div>
+                                    {/* Key Features */}
+                                    <div className="homepage-industry-features">
+                                        <h4 className="homepage-features-title">Key Solutions:</h4>
+                                        <ul className="homepage-features-list">
+                                            {industry.features.map((feature, idx) => (
+                                                <li key={idx} className="homepage-feature-item">
+                                                    <div className={`homepage-feature-bullet bg-${industry.color}-400`}></div>
+                                                    <span>{feature}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    
+                                    {/* Achievements */}
+                                    <div className="homepage-industry-achievements">
+                                        <h4 className="homepage-achievements-title">
+                                            <Award className="w-4 h-4" />
+                                            Achievements:
+                                        </h4>
+                                        <div className="homepage-achievements-list">
+                                            {industry.achievements.map((achievement, idx) => (
+                                                <span key={idx} className={`homepage-achievement-tag bg-${industry.color}-100 text-${industry.color}-700`}>
+                                                    {achievement}
+                                                </span>
+                                            ))}
                                         </div>
-                                    );
-                                }).concat(
-                                    // Duplicate set for seamless loop
-                                    [
-                                        { 
-                                            icon: <Users className="w-12 h-12" />, 
-                                            name: "Media and Entertainment", 
-                                            desc: "Content recommendation systems, audience analytics, and personalized streaming experiences that engage viewers", 
-                                            stats: "10M+ Content Views",
-                                            features: ["Content AI", "Audience Analytics", "Recommendation Engine", "Content Moderation"],
-                                            bgPattern: "🎬",
-                                            color: "blue"
-                                        },
-                                        { 
-                                            icon: <Heart className="w-12 h-12" />, 
-                                            name: "Health and Life Insurance", 
-                                            desc: "Risk assessment, claims processing automation, and predictive health analytics for better coverage decisions", 
-                                            stats: "500K+ Policies Processed",
-                                            features: ["Risk Assessment", "Claims Automation", "Health Predictions", "Fraud Detection"],
-                                            bgPattern: "🏥",
-                                            color: "red"
-                                        },
-                                        { 
-                                            icon: <Factory className="w-12 h-12" />, 
-                                            name: "Transportation and Logistics", 
-                                            desc: "Route optimization, fleet management, and supply chain intelligence for efficient operations", 
-                                            stats: "1000+ Fleet Vehicles",
-                                            features: ["Route Optimization", "Fleet Management", "Supply Chain AI", "Predictive Maintenance"],
-                                            bgPattern: "🚛",
-                                            color: "green"
-                                        },
-                                        { 
-                                            icon: <ShoppingCart className="w-12 h-12" />, 
-                                            name: "E-commerce and Retail", 
-                                            desc: "Personalized shopping experiences, inventory optimization, and customer behavior analysis for increased sales", 
-                                            stats: "2M+ Customers Served",
-                                            features: ["Personalization", "Inventory AI", "Customer Analytics", "Price Optimization"],
-                                            bgPattern: "🛒",
-                                            color: "orange"
-                                        }
-                                    ].map((industry, index) => {
-                                        const colorConfig = colorClasses[industry.color] || colorClasses.blue;
-                                        
-                                        return (
-                                            <div key={`duplicate-${index}`} className="flex-shrink-0 mx-4 w-80">
-                                                <div className="group relative overflow-hidden transform transition-all duration-500 hover:scale-105">
-                                                    {/* Enhanced Background Pattern */}
-                                                    <div className="absolute top-4 right-4 text-4xl opacity-10 group-hover:opacity-30 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
-                                                        {industry.bgPattern}
-                                                    </div>
-                                                    
-                                                    {/* Enhanced Card with Gradient Border */}
-                                                    <div className="relative p-6 border-2 border-gray-200 rounded-2xl bg-white hover:shadow-2xl transition-all duration-500 hover:border-orange-300 hover:-translate-y-3 h-full group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-gray-50">
-                                                        {/* Enhanced Icon with Glow Effect */}
-                                                        <div className={`w-14 h-14 ${colorConfig.bg} rounded-xl flex items-center justify-center ${colorConfig.text} mb-4 group-hover:scale-110 transition-all duration-300 relative z-10 group-hover:shadow-lg`}>
-                                                            {industry.icon}
-                                                        </div>
-                                                        
-                                                        {/* Content */}
-                                                        <h3 className="text-lg font-bold mb-3 text-gray-900 relative z-10 group-hover:text-orange-600 transition-colors duration-300">{industry.name}</h3>
-                                                        <p className="text-gray-600 mb-3 leading-relaxed text-sm relative z-10 group-hover:text-gray-700">{industry.desc}</p>
-                                                        
-                                                        {/* Enhanced Stats Badge */}
-                                                        <div className="inline-flex items-center px-3 py-1 bg-gray-50 text-gray-600 rounded-full text-xs font-semibold mb-3 relative z-10 group-hover:bg-orange-50 group-hover:text-orange-600 transition-all duration-300">
-                                                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mr-2 group-hover:bg-orange-400"></div>
-                                                            {industry.stats}
-                                                        </div>
-                                                        
-                                                        {/* Enhanced Features List */}
-                                                        <ul className="space-y-1 mb-3 relative z-10">
-                                                            {industry.features.map((feature, idx) => (
-                                                                <li key={idx} className="flex items-center gap-2 text-xs text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
-                                                                    <div className="w-1 h-1 rounded-full bg-gray-400 group-hover:bg-orange-400 transition-colors duration-300"></div>
-                                                                    <span className="font-medium">{feature}</span>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                        
-                                                        {/* Enhanced CTA with Hover Effect */}
-                                                        <Link to="/industries" className="inline-flex items-center gap-2 text-gray-700 font-semibold hover:gap-4 transition-all duration-300 hover:underline text-sm relative z-10 group-hover:text-orange-600">
-                                                            Explore Solutions
-                                                            <ArrowRight className="w-3 h-3 hover:translate-x-1 transition-transform duration-300" />
-                                                        </Link>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        );
-                                    })
-                                )}
+                                    </div>
+                                    
+                                    {/* Industry CTA */}
+                                    <Link to="/industries" className={`homepage-industry-cta text-${industry.color}-600 hover:text-${industry.color}-700`}>
+                                        Explore Solutions
+                                        <ArrowRight className="w-4 h-4" />
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
+                        ))}
                     </div>
 
-                    {/* CTA Section */}
-                    <div className="text-center">
-                        <Link to="/industries" className="inline-flex items-center gap-3 bg-orange-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                            <span>Explore All Industries</span>
-                            <ArrowRight className="w-5 h-5" />
-                        </Link>
+                    {/* Industries CTA */}
+                    <div className="homepage-industries-cta fade-in">
+                        <div className="homepage-cta-content">
+                            <h3 className="homepage-cta-title">Ready to Transform Your Industry?</h3>
+                            <p className="homepage-cta-subtitle">Join leading companies already leveraging our AI solutions for competitive advantage.</p>
+                            <Link to="/industries" className="homepage-cta-button">
+                                <span>Explore All Industries</span>
+                                <ArrowRight className="w-5 h-5" />
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            
-
-            {/* Success Stories Preview - Enhanced Scrolling */}
-            <section className="py-24 bg-gray-50">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <div className="inline-block px-4 py-2 bg-green-100 text-green-600 rounded-full font-semibold text-sm mb-6">
+            {/* Success Stories Preview */}
+            <section className="home-section home-section-gray">
+                <div className="home-container">
+                    <div className="home-section-header fade-in">
+                        <div className="home-section-badge">
                             PROVEN RESULTS
                         </div>
-                        <h2 className="text-4xl font-bold mb-4 text-orange-500">Success Stories</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">
+                        <h2 className="home-section-title">Success Stories</h2>
+                        <p className="home-section-description">
                             Real results from real clients who transformed their business with our AI solutions.
                         </p>
                     </div>
 
                     {/* Horizontal Scrolling Success Stories */}
-                    <div className="relative overflow-hidden">
+                    <div className="home-services-scroll">
                         <div className="scroll-fade-left scroll-fade-right">
                             <div className="flex animate-scroll-reverse">
                                 {/* First set */}
@@ -661,29 +592,27 @@ const Home = () => {
                                     const colorConfig = colorClasses[study.color] || colorClasses.blue;
                                     
                                     return (
-                                        <div key={index} className="flex-shrink-0 mx-4 w-80">
-                                            <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 group border border-gray-100 hover:-translate-y-2 h-full hover:border-orange-300">
-                                                <div className="flex items-center gap-3 mb-4">
-                                                    <div className="text-2xl">{study.icon}</div>
-                                                    <div>
-                                                        <div className={`w-2 h-2 rounded-full ${colorConfig.text.replace('text-', 'bg-')} mb-1`}></div>
-                                                        <span className="text-xs text-gray-500 uppercase tracking-wider">{study.industry}</span>
-                                                    </div>
+                                        <div key={index} className="home-success-card">
+                                            <div className="home-success-header">
+                                                <div className="home-success-emoji">{study.icon}</div>
+                                                <div>
+                                                    <div className={`home-success-indicator ${colorConfig.text.replace('text-', 'bg-')}`}></div>
+                                                    <span className="home-success-industry">{study.industry}</span>
                                                 </div>
-                                                
-                                                <h3 className="text-lg font-bold mb-3 group-hover:text-orange-600 transition-colors">{study.title}</h3>
-                                                <p className="text-gray-600 mb-3 leading-relaxed text-sm">{study.result}</p>
-                                                <p className="text-xs text-gray-500 mb-4 italic">{study.details}</p>
-                                                
-                                                <div className="flex items-center justify-between">
-                                                    <div>
-                                                        <div className={`text-3xl font-bold ${colorConfig.text} group-hover:scale-110 transition-transform duration-300`}>
-                                                            {study.metric}
-                                                        </div>
-                                                        <div className="text-xs text-gray-500 font-medium">{study.company}</div>
+                                            </div>
+                                            
+                                            <h3 className="home-success-title">{study.title}</h3>
+                                            <p className="home-success-description">{study.result}</p>
+                                            <p className="home-success-details">{study.details}</p>
+                                            
+                                            <div className="home-success-footer">
+                                                <div>
+                                                    <div className={`home-success-metric ${colorConfig.text}`}>
+                                                        {study.metric}
                                                     </div>
-                                                    <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-orange-500 group-hover:translate-x-1 transition-all duration-300" />
+                                                    <div className="home-success-company">{study.company}</div>
                                                 </div>
+                                                <ArrowRight className="home-success-arrow" />
                                             </div>
                                         </div>
                                     );
@@ -754,29 +683,27 @@ const Home = () => {
                                         const colorConfig = colorClasses[study.color] || colorClasses.blue;
                                         
                                         return (
-                                            <div key={`duplicate-${index}`} className="flex-shrink-0 mx-4 w-80">
-                                                <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 group border border-gray-100 hover:-translate-y-2 h-full hover:border-orange-300">
-                                                    <div className="flex items-center gap-3 mb-4">
-                                                        <div className="text-2xl">{study.icon}</div>
-                                                        <div>
-                                                            <div className={`w-2 h-2 rounded-full ${colorConfig.text.replace('text-', 'bg-')} mb-1`}></div>
-                                                            <span className="text-xs text-gray-500 uppercase tracking-wider">{study.industry}</span>
-                                                        </div>
+                                            <div key={`duplicate-${index}`} className="home-success-card">
+                                                <div className="home-success-header">
+                                                    <div className="home-success-emoji">{study.icon}</div>
+                                                    <div>
+                                                        <div className={`home-success-indicator ${colorConfig.text.replace('text-', 'bg-')}`}></div>
+                                                        <span className="home-success-industry">{study.industry}</span>
                                                     </div>
-                                                    
-                                                    <h3 className="text-lg font-bold mb-3 group-hover:text-orange-600 transition-colors">{study.title}</h3>
-                                                    <p className="text-gray-600 mb-3 leading-relaxed text-sm">{study.result}</p>
-                                                    <p className="text-xs text-gray-500 mb-4 italic">{study.details}</p>
-                                                    
-                                                    <div className="flex items-center justify-between">
-                                                        <div>
-                                                            <div className={`text-3xl font-bold ${colorConfig.text} group-hover:scale-110 transition-transform duration-300`}>
-                                                                {study.metric}
-                                                            </div>
-                                                            <div className="text-xs text-gray-500 font-medium">{study.company}</div>
+                                                </div>
+                                                
+                                                <h3 className="home-success-title">{study.title}</h3>
+                                                <p className="home-success-description">{study.result}</p>
+                                                <p className="home-success-details">{study.details}</p>
+                                                
+                                                <div className="home-success-footer">
+                                                    <div>
+                                                        <div className={`home-success-metric ${colorConfig.text}`}>
+                                                            {study.metric}
                                                         </div>
-                                                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-orange-500 group-hover:translate-x-1 transition-all duration-300" />
+                                                        <div className="home-success-company">{study.company}</div>
                                                     </div>
+                                                    <ArrowRight className="home-success-arrow" />
                                                 </div>
                                             </div>
                                         );
@@ -786,8 +713,8 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="text-center mt-16">
-                        <Link to="/case-studies" className="btn btn-primary">
+                    <div className="text-center mt-16 fade-in">
+                        <Link to="/case-studies" className="home-hero-cta">
                             View All Success Stories
                         </Link>
                     </div>
@@ -795,28 +722,28 @@ const Home = () => {
             </section>
 
             {/* Projects Done & Stats */}
-            <section className="py-24 bg-gradient-to-r from-orange-500 to-amber-600">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-white mb-4">Our Impact in Numbers</h2>
-                        <p className="text-orange-100 max-w-2xl mx-auto">
+            <section className="home-section home-stats-section">
+                <div className="home-container">
+                    <div className="home-section-header fade-in">
+                        <h2 className="home-section-title" style={{ color: 'white' }}>Our Impact in Numbers</h2>
+                        <p className="home-section-description" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                             Delivering measurable results across hundreds of projects worldwide.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div className="home-stats-grid fade-in">
                         {[
                             { metric: "500+", label: "Projects Completed", icon: <CheckCircle className="w-8 h-8" /> },
                             { metric: "200+", label: "Happy Clients", icon: <Users className="w-8 h-8" /> },
                             { metric: "50+", label: "Industries Served", icon: <Building2 className="w-8 h-8" /> },
                             { metric: "98%", label: "Success Rate", icon: <Star className="w-8 h-8" /> }
                         ].map((stat, index) => (
-                            <div key={index} className="text-center">
-                                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                            <div key={index} className="home-stat-item">
+                                <div className="home-stat-icon">
                                     {stat.icon}
                                 </div>
-                                <div className="text-4xl font-bold text-white mb-2">{stat.metric}</div>
-                                <div className="text-orange-100">{stat.label}</div>
+                                <div className="home-stat-number">{stat.metric}</div>
+                                <div className="home-stat-label">{stat.label}</div>
                             </div>
                         ))}
                     </div>
@@ -824,16 +751,16 @@ const Home = () => {
             </section>
 
             {/* Our Values */}
-            <section className="py-24 bg-white">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold mb-4 text-orange-500">Our Values</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">
+            <section className="home-section">
+                <div className="home-container">
+                    <div className="home-section-header fade-in">
+                        <h2 className="home-section-title">Our Values</h2>
+                        <p className="home-section-description">
                             The principles that guide everything we do, from innovation to client relationships.
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="home-values-grid fade-in">
                         {[
                             {
                                 icon: <Brain className="w-8 h-8" />,
@@ -862,12 +789,12 @@ const Home = () => {
                         ].map((value, index) => {
                             const colorConfig = colorClasses[value.color] || colorClasses.blue;
                             return (
-                                <div key={index} className="text-center p-6 rounded-2xl hover:shadow-lg transition-all duration-300">
-                                    <div className={`w-16 h-16 ${colorConfig.bg} rounded-full flex items-center justify-center ${colorConfig.text} mx-auto mb-6`}>
+                                <div key={index} className="home-value-item">
+                                    <div className={`home-value-icon ${colorConfig.bg} ${colorConfig.text}`}>
                                         {value.icon}
                                     </div>
-                                    <h3 className="text-xl font-bold mb-4">{value.title}</h3>
-                                    <p className="text-gray-600">{value.desc}</p>
+                                    <h3 className="home-value-title">{value.title}</h3>
+                                    <p className="home-value-description">{value.desc}</p>
                                 </div>
                             );
                         })}
@@ -875,43 +802,45 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Trusted Clients Section - At bottom */}
-            <section className="py-16 bg-gray-50 border-t border-gray-100 overflow-hidden">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-12">
+            {/* Trusted Clients Section */}
+            <section className="home-section home-section-gray">
+                <div className="home-container">
+                    <div className="text-center mb-12 fade-in">
                         <p className="text-gray-500 text-sm uppercase tracking-wider mb-8">Trusted by Leading Organizations</p>
-                        <div className="relative scroll-fade-left scroll-fade-right">
-                            <div className="flex animate-scroll">
-                                {/* First set of logos */}
-                                {clients.map((client, index) => (
-                                    <div key={index} className="flex-shrink-0 mx-8">
-                                        <div className="w-28 h-16 bg-white border border-gray-200 rounded-xl flex items-center justify-center hover:border-orange-300 hover:shadow-md transition-all duration-300 cursor-pointer group">
-                                            <div className="text-center">
-                                                <div className="text-xl font-bold text-gray-400 group-hover:text-orange-500 transition-colors">
-                                                    {client.logo}
-                                                </div>
-                                                <div className="text-xs text-gray-300 group-hover:text-orange-400 transition-colors mt-1">
-                                                    {client.name.split(' ')[0]}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                                {/* Duplicate set for seamless loop */}
-                                {clients.map((client, index) => (
-                                    <div key={`duplicate-${index}`} className="flex-shrink-0 mx-8">
-                                        <div className="w-28 h-16 bg-white border border-gray-200 rounded-xl flex items-center justify-center hover:border-orange-300 hover:shadow-md transition-all duration-300 cursor-pointer group">
-                                            <div className="text-center">
-                                                <div className="text-xl font-bold text-gray-400 group-hover:text-orange-500 transition-colors">
-                                                    {client.logo}
-                                                </div>
-                                                <div className="text-xs text-gray-300 group-hover:text-orange-400 transition-colors mt-1">
-                                                    {client.name.split(' ')[0]}
+                        <div className="home-clients-scroll">
+                            <div className="scroll-fade-left scroll-fade-right">
+                                <div className="flex animate-scroll">
+                                    {/* First set of logos */}
+                                    {clients.map((client, index) => (
+                                        <div key={index} className="home-client-logo">
+                                            <div className="home-client-card">
+                                                <div className="home-client-content">
+                                                    <div className="home-client-logo-text">
+                                                        {client.logo}
+                                                    </div>
+                                                    <div className="home-client-name">
+                                                        {client.name.split(' ')[0]}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
+                                    {/* Duplicate set for seamless loop */}
+                                    {clients.map((client, index) => (
+                                        <div key={`duplicate-${index}`} className="home-client-logo">
+                                            <div className="home-client-card">
+                                                <div className="home-client-content">
+                                                    <div className="home-client-logo-text">
+                                                        {client.logo}
+                                                    </div>
+                                                    <div className="home-client-name">
+                                                        {client.name.split(' ')[0]}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -919,19 +848,19 @@ const Home = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="py-24 bg-white border-t border-gray-200">
-                <div className="container mx-auto px-6 text-center">
-                    <h2 className="text-4xl font-bold text-orange-500 mb-6">
+            <section className="home-cta-section">
+                <div className="home-container text-center fade-in">
+                    <h2 className="home-cta-title">
                         Ready to Transform Your Business with AI?
                     </h2>
-                    <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                    <p className="home-cta-description">
                         Join hundreds of organizations already using our AI solutions to drive innovation and growth.
                     </p>
-                    <div className="flex flex-col md:flex-row gap-4 justify-center">
-                        <Link to="/contact" className="btn btn-primary">
+                    <div className="home-cta-buttons">
+                        <Link to="/contact" className="home-cta-primary">
                             Get Started Today
                         </Link>
-                        <Link to="/services" className="btn border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
+                        <Link to="/services" className="home-cta-secondary">
                             Explore Our Services
                         </Link>
                     </div>
