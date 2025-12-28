@@ -1196,13 +1196,15 @@
 .home-success-card {
   flex-shrink: 0;
   width: 320px;
+  height: 280px;
   margin: 0 16px;
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 16px;
   padding: 24px;
-  height: 100%;
   transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .home-success-card:hover {
@@ -1252,6 +1254,11 @@
   margin-bottom: 12px;
   line-height: 1.6;
   font-size: 0.875rem;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .home-success-details {
