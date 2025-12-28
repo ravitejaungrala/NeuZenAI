@@ -218,64 +218,66 @@ const Careers = () => {
                     
                     <div className="job-details-grid">
                         {/* Left Column - Job Details */}
-                        <div className="job-details-main">
-                            <div className="job-details-header">
-                                <h1 className="job-details-title">{selectedJob.role}</h1>
-                                <div className="job-details-meta">
-                                    <span className="job-details-meta-item">
-                                        <MapPin className="job-details-meta-icon" /> {selectedJob.location}
-                                    </span>
-                                    <span className="job-details-meta-item">
-                                        <Briefcase className="job-details-meta-icon" /> {selectedJob.category}
-                                    </span>
-                                    <span className="job-details-meta-item">
-                                        <Clock className="job-details-meta-icon" /> {selectedJob.type}
-                                    </span>
+                        <div className="job-details-left-side">
+                            <div className="job-details-main">
+                                <div className="job-details-header">
+                                    <h1 className="job-details-title">{selectedJob.role}</h1>
+                                    <div className="job-details-meta">
+                                        <span className="job-details-meta-item">
+                                            <MapPin className="job-details-meta-icon" /> {selectedJob.location}
+                                        </span>
+                                        <span className="job-details-meta-item">
+                                            <Briefcase className="job-details-meta-icon" /> {selectedJob.category}
+                                        </span>
+                                        <span className="job-details-meta-item">
+                                            <Clock className="job-details-meta-icon" /> {selectedJob.type}
+                                        </span>
+                                    </div>
+                                    <p className="job-details-description">{selectedJob.description}</p>
                                 </div>
-                                <p className="job-details-description">{selectedJob.description}</p>
-                            </div>
 
-                            {/* Company Overview */}
-                            <div className="company-overview">
-                                <h3>About NeuZenAI</h3>
-                                <p>
-                                    NeuZenAI is a leading artificial intelligence company focused on developing cutting-edge AI solutions 
-                                    that transform industries and improve lives. With offices in Silicon Valley and Hyderabad T-Hub, 
-                                    we're building the future of AI technology with a team of world-class engineers, researchers, and innovators. 
-                                    Our mission is to democratize AI and make intelligent solutions accessible to businesses of all sizes.
-                                </p>
-                            </div>
+                                {/* Company Overview */}
+                                <div className="company-overview">
+                                    <h3>About NeuZenAI</h3>
+                                    <p>
+                                        NeuZenAI is a leading artificial intelligence company focused on developing cutting-edge AI solutions 
+                                        that transform industries and improve lives. With offices in Silicon Valley and Hyderabad T-Hub, 
+                                        we're building the future of AI technology with a team of world-class engineers, researchers, and innovators. 
+                                        Our mission is to democratize AI and make intelligent solutions accessible to businesses of all sizes.
+                                    </p>
+                                </div>
 
-                            {/* Key Responsibilities */}
-                            <div className="section">
-                                <h3 className="section-title">Key Responsibilities</h3>
-                                <ul className="responsibilities-list">
-                                    {selectedJob.keyResponsibilities.map((responsibility, index) => (
-                                        <li key={index} className="list-item">
-                                            <div className="list-bullet"></div>
-                                            <span className="list-text">{responsibility}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                                {/* Key Responsibilities */}
+                                <div className="section">
+                                    <h3 className="section-title">Key Responsibilities</h3>
+                                    <ul className="responsibilities-list">
+                                        {selectedJob.keyResponsibilities.map((responsibility, index) => (
+                                            <li key={index} className="list-item">
+                                                <div className="list-bullet"></div>
+                                                <span className="list-text">{responsibility}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
 
-                            {/* Experience and Skills */}
-                            <div className="section">
-                                <h3 className="section-title">Experience & Skills</h3>
-                                <ul className="skills-list">
-                                    {selectedJob.experienceSkills.map((skill, index) => (
-                                        <li key={index} className="list-item">
-                                            <div className="list-bullet"></div>
-                                            <span className="list-text">{skill}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+                                {/* Experience and Skills */}
+                                <div className="section">
+                                    <h3 className="section-title">Experience & Skills</h3>
+                                    <ul className="skills-list">
+                                        {selectedJob.experienceSkills.map((skill, index) => (
+                                            <li key={index} className="list-item">
+                                                <div className="list-bullet"></div>
+                                                <span className="list-text">{skill}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
                         {/* Right Column - Job Info & Apply */}
-                        <div className="job-details-sidebar">
-                            <div className="job-info-card">
+                        <div className="job-details-right-side">
+                            <div className="job-info-card-sticky">
                                 <h4 className="job-info-title">Job Details</h4>
                                 <div className="job-info-grid">
                                     <div className="job-info-item">

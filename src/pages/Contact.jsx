@@ -59,12 +59,6 @@ const Contact = () => {
             title: "Visit Us",
             details: "123 AI Innovation Drive, Tech City, TC 12345",
             description: "Come say hello at our office"
-        },
-        {
-            icon: <Clock className="w-6 h-6" />,
-            title: "Working Hours",
-            details: "Monday - Friday: 8:00 AM - 6:00 PM",
-            description: "Weekend support available"
         }
     ];
 
@@ -112,28 +106,51 @@ const Contact = () => {
                 </div>
             </section>
 
-            {/* Contact Form & Info Section */}
-            <section className="py-24">
+            {/* Contact Form & Info Section with Image Background */}
+            <section className="contact-form-section">
                 <div className="container mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-16">
-                        {/* Contact Form */}
-                        <div className="contact-form-container fade-in">
-                            <h2 className="text-3xl font-bold mb-6 text-black">Send Us a Message</h2>
-                            <p className="text-gray-600 mb-8 text-lg">
+                    <div className="contact-form-grid">
+                        {/* Left Side - Get in Touch */}
+                        <div className="contact-info-section-left fade-in">
+                            <h2>Get in Touch</h2>
+                            <p>
+                                We're here to help you succeed. Reach out through any of these channels and let's start building something amazing together.
+                            </p>
+
+                            <div className="contact-info-cards-grid">
+                                {contactInfo.map((info, index) => (
+                                    <div key={index} className="contact-info-card-bg fade-in-stagger">
+                                        <div className="contact-info-icon-bg">
+                                            {info.icon}
+                                        </div>
+                                        <div className="contact-info-content-bg">
+                                            <h3 className="contact-info-title-bg">{info.title}</h3>
+                                            <p className="contact-info-details-bg">{info.details}</p>
+                                            <p className="contact-info-description-bg">{info.description}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Right Side - Send Us a Message Form */}
+                        <div className="contact-form-section-right fade-in">
+                            <h2>Send Us a Message</h2>
+                            <p>
                                 Fill out the form below and we'll get back to you within 24 hours with a personalized response.
                             </p>
 
                             {isSubmitted ? (
-                                <div className="success-message">
+                                <div className="success-message-bg">
                                     <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                                    <h3 className="text-2xl font-bold text-green-600 mb-2">Message Sent!</h3>
-                                    <p className="text-gray-600">Thank you for reaching out. We'll be in touch soon.</p>
+                                    <h3>Message Sent!</h3>
+                                    <p>Thank you for reaching out. We'll be in touch soon.</p>
                                 </div>
                             ) : (
-                                <form onSubmit={handleSubmit} className="contact-form">
-                                    <div className="form-row">
-                                        <div className="form-group">
-                                            <label htmlFor="name" className="form-label">
+                                <form onSubmit={handleSubmit} className="contact-form-bg">
+                                    <div className="form-row-bg">
+                                        <div className="form-group-bg">
+                                            <label htmlFor="name" className="form-label-bg">
                                                 <User className="w-4 h-4" />
                                                 Full Name *
                                             </label>
@@ -144,12 +161,12 @@ const Contact = () => {
                                                 value={formData.name}
                                                 onChange={handleChange}
                                                 required
-                                                className="form-input"
+                                                className="form-input-bg"
                                                 placeholder="Your full name"
                                             />
                                         </div>
-                                        <div className="form-group">
-                                            <label htmlFor="email" className="form-label">
+                                        <div className="form-group-bg">
+                                            <label htmlFor="email" className="form-label-bg">
                                                 <Mail className="w-4 h-4" />
                                                 Email Address *
                                             </label>
@@ -160,15 +177,15 @@ const Contact = () => {
                                                 value={formData.email}
                                                 onChange={handleChange}
                                                 required
-                                                className="form-input"
+                                                className="form-input-bg"
                                                 placeholder="your.email@company.com"
                                             />
                                         </div>
                                     </div>
 
-                                    <div className="form-row">
-                                        <div className="form-group">
-                                            <label htmlFor="company" className="form-label">
+                                    <div className="form-row-bg">
+                                        <div className="form-group-bg">
+                                            <label htmlFor="company" className="form-label-bg">
                                                 <Building className="w-4 h-4" />
                                                 Company
                                             </label>
@@ -178,12 +195,12 @@ const Contact = () => {
                                                 name="company"
                                                 value={formData.company}
                                                 onChange={handleChange}
-                                                className="form-input"
+                                                className="form-input-bg"
                                                 placeholder="Your company name"
                                             />
                                         </div>
-                                        <div className="form-group">
-                                            <label htmlFor="phone" className="form-label">
+                                        <div className="form-group-bg">
+                                            <label htmlFor="phone" className="form-label-bg">
                                                 <Phone className="w-4 h-4" />
                                                 Phone Number
                                             </label>
@@ -193,32 +210,14 @@ const Contact = () => {
                                                 name="phone"
                                                 value={formData.phone}
                                                 onChange={handleChange}
-                                                className="form-input"
+                                                className="form-input-bg"
                                                 placeholder="+1 (555) 123-4567"
                                             />
                                         </div>
                                     </div>
 
-                                    <div className="form-group">
-                                        <label htmlFor="service" className="form-label">
-                                            Service Interest
-                                        </label>
-                                        <select
-                                            id="service"
-                                            name="service"
-                                            value={formData.service}
-                                            onChange={handleChange}
-                                            className="form-select"
-                                        >
-                                            <option value="">Select a service</option>
-                                            {services.map((service, index) => (
-                                                <option key={index} value={service}>{service}</option>
-                                            ))}
-                                        </select>
-                                    </div>
-
-                                    <div className="form-group">
-                                        <label htmlFor="message" className="form-label">
+                                    <div className="form-group-bg">
+                                        <label htmlFor="message" className="form-label-bg">
                                             <MessageSquare className="w-4 h-4" />
                                             Message *
                                         </label>
@@ -229,12 +228,12 @@ const Contact = () => {
                                             onChange={handleChange}
                                             required
                                             rows="5"
-                                            className="form-textarea"
+                                            className="form-textarea-bg"
                                             placeholder="Tell us about your project and how we can help..."
                                         ></textarea>
                                     </div>
 
-                                    <button type="submit" className="submit-button">
+                                    <button type="submit" className="submit-button-bg">
                                         <Send className="w-5 h-5" />
                                         Send Message
                                     </button>
@@ -242,43 +241,20 @@ const Contact = () => {
                             )}
                         </div>
 
-                        {/* Contact Information */}
-                        <div className="contact-info-container fade-in">
-                            <div className="text-center">
-                                <h2 className="text-5xl font-bold mb-6">Get in Touch</h2>
-                                <p className="text-gray-600 mb-8 text-lg max-w-2xl mx-auto">
-                                    We're here to help you succeed. Reach out through any of these channels and let's start building something amazing together.
+                        {/* Full Width Quick Response Promise */}
+                        <div className="response-promise-full-width fade-in">
+                            <div className="response-promise-icon-full">
+                                <Clock className="w-8 h-8" />
+                            </div>
+                            <div>
+                                <h3>Quick Response Guarantee</h3>
+                                <p>
+                                    We respond to all inquiries within 24 hours. For urgent matters, 
+                                    call us directly for immediate assistance. Our team is committed to providing 
+                                    exceptional support throughout your AI transformation journey. Whether you're looking 
+                                    to implement AI solutions, need technical consultation, or want to explore partnership 
+                                    opportunities, we're here to help you succeed.
                                 </p>
-                            </div>
-
-                            <div className="contact-info-grid">
-                                {contactInfo.map((info, index) => (
-                                    <div key={index} className="contact-info-card fade-in-stagger">
-                                        <div className="contact-info-icon">
-                                            {info.icon}
-                                        </div>
-                                        <div className="contact-info-content">
-                                            <h3 className="contact-info-title">{info.title}</h3>
-                                            <p className="contact-info-details">{info.details}</p>
-                                            <p className="contact-info-description">{info.description}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Quick Response Promise */}
-                            <div className="response-promise fade-in">
-                                <div className="response-promise-icon">
-                                    <Clock className="w-8 h-8" />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-black mb-2">Quick Response Guarantee</h3>
-                                    <p className="text-gray-600 leading-relaxed">
-                                        We respond to all inquiries within 24 hours. For urgent matters, 
-                                        call us directly for immediate assistance. Our team is committed to providing 
-                                        exceptional support throughout your AI transformation journey.
-                                    </p>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -459,7 +459,21 @@
 /* Job Details Sidebar */
 .job-details-sidebar {
   position: sticky;
-  top: 120px;
+  top: 100px;
+  height: fit-content;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+/* Sticky Sidebar - Separate class for better control */
+.job-sidebar-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  z-index: 10;
 }
 
 .job-info-card {
@@ -468,6 +482,12 @@
   border-radius: 20px;
   padding: 32px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  z-index: 10;
 }
 
 .job-info-title {
@@ -824,4 +844,26 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+/* Separate Left and Right Side Classes */
+.job-details-left-side {
+  background: #ffffff;
+  padding: 0;
+}
+
+.job-details-right-side {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.job-info-card-sticky {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
