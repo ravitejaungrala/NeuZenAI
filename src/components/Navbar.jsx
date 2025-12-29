@@ -1,29 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import './Navbar.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [showNavbar, setShowNavbar] = useState(true);
   const location = useLocation();
   const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      
+      // Set scrolled state for styling
+      setIsScrolled(currentScrollY > 50);
+      
+      // Show/hide navbar based on scroll direction
+      if (currentScrollY < 10) {
+        // Always show navbar at the top
+        setShowNavbar(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down - hide navbar
+        setShowNavbar(false);
+        setActiveDropdown(null); // Close any open dropdowns
+        setMobileMenuOpen(false); // Close mobile menu
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up - show navbar
+        setShowNavbar(true);
+      }
+      
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
-  // Navbar background logic - always with white background for dark text visibility
-  const navbarClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || !isHome
-      ? 'bg-white shadow-md py-2'
-      : 'bg-white/90 backdrop-blur-md shadow-sm py-2'
-    }`;
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
+  // Navbar classes with unique naming
+  const navbarClasses = `navbar-scroll-container ${
+    showNavbar ? 'navbar-scroll-visible' : 'navbar-scroll-hidden'
+  } ${isScrolled || !isHome ? 'navbar-scroll-bg-scrolled' : 'navbar-scroll-bg-default'}`;
 
   const navLinks = [
+    { name: 'About Us', path: '/about' },
     {
       name: 'Services',
       path: '/services',
@@ -35,7 +58,7 @@ const Navbar = () => {
       ]
     },
     {
-      name: 'Industries',
+      name: 'Industries / Verticals',
       path: '/industries',
       dropdown: [
         { name: 'Media and Entertainment', path: '/industries/media-entertainment' },
@@ -44,6 +67,7 @@ const Navbar = () => {
         { name: 'E-commerce and Retail', path: '/industries/ecommerce-retail' }
       ]
     },
+    { name: 'Success Stories', path: '/case-studies' },
     {
       name: 'Products',
       path: '/products',
@@ -53,33 +77,30 @@ const Navbar = () => {
         { name: 'NvisionAI', path: '/products/nvisionai' }
       ]
     },
-    { name: 'Success Stories', path: '/case-studies' },
-    { name: 'Insights', path: '/insights' },
-    { name: 'About Us', path: '/about' },
     { name: 'Contact Us', path: '/contact' },
   ];
 
   return (
     <nav className={navbarClasses}>
-      <div className="container mx-auto px-6 flex justify-between items-center">
+      <div className="navbar-scroll-content">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold font-heading tracking-tight">
-          <span className="text-orange-500">NeuZen</span>
-          <span className="text-gray-900">AI</span>
+        <Link to="/" className="navbar-scroll-logo">
+          <span className="navbar-scroll-logo-neu">NeuZen</span>
+          <span className="navbar-scroll-logo-ai">AI</span>
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="navbar-scroll-menu">
           {navLinks.map((link) => (
             <div
               key={link.name}
-              className="relative group"
+              className="navbar-scroll-dropdown"
               onMouseEnter={() => link.dropdown && setActiveDropdown(link.name)}
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <Link
                 to={link.path}
-                className="flex items-center gap-1 text-sm font-medium transition-colors text-gray-700 hover:text-orange-600"
+                className="navbar-scroll-link"
               >
                 {link.name}
                 {link.dropdown && <ChevronDown className="w-4 h-4" />}
@@ -87,13 +108,13 @@ const Navbar = () => {
 
               {/* Dropdown Menu */}
               {link.dropdown && activeDropdown === link.name && (
-                <div className="absolute top-full left-0 pt-4 opacity-100 visible transition-all duration-200 transform translate-y-0">
-                  <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-2 min-w-[200px] overflow-hidden">
+                <div className="navbar-scroll-dropdown-menu">
+                  <div className="navbar-scroll-dropdown-content">
                     {link.dropdown.map((item) => (
                       <Link
                         key={item.name}
                         to={item.path}
-                        className="block px-4 py-2 text-sm text-gray-600 hover:bg-orange-50 hover:text-orange-600 rounded-lg transition-colors"
+                        className="navbar-scroll-dropdown-item"
                       >
                         {item.name}
                       </Link>
@@ -106,15 +127,15 @@ const Navbar = () => {
         </div>
 
         {/* CTA Button */}
-        <div className="hidden md:block">
-          <Link to="/careers" className="btn btn-primary">
-            Careers
+        <div className="navbar-scroll-cta">
+          <Link to="/careers" className="navbar-scroll-btn">
+            Career
           </Link>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-gray-800"
+          className="navbar-scroll-mobile-toggle"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X /> : <Menu />}
@@ -123,23 +144,23 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-lg p-4 flex flex-col gap-4">
+        <div className="navbar-scroll-mobile-menu">
           {navLinks.map((link) => (
             <div key={link.name}>
               <Link
                 to={link.path}
-                className="block text-gray-800 font-medium py-2"
+                className="navbar-scroll-mobile-link"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}
               </Link>
               {link.dropdown && (
-                <div className="pl-4 flex flex-col gap-2 mt-2 border-l-2 border-orange-100">
+                <div className="navbar-scroll-mobile-dropdown">
                   {link.dropdown.map((item) => (
                     <Link
                       key={item.name}
                       to={item.path}
-                      className="text-sm text-gray-500 py-1"
+                      className="navbar-scroll-mobile-dropdown-item"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
@@ -151,10 +172,10 @@ const Navbar = () => {
           ))}
           <Link
             to="/careers"
-            className="btn btn-primary w-full text-center mt-4"
+            className="navbar-scroll-mobile-cta"
             onClick={() => setMobileMenuOpen(false)}
           >
-            Careers
+            Career
           </Link>
         </div>
       )}

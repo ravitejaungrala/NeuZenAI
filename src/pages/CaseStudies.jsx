@@ -6,6 +6,7 @@ import './CaseStudies.css';
 const CaseStudies = () => {
     const caseStudies = [
         {
+            id: "education-remote-learning",
             category: "Education",
             title: "Revolutionizing Remote Learning",
             company: "EduTech Global",
@@ -23,6 +24,7 @@ const CaseStudies = () => {
             industry: "EdTech"
         },
         {
+            id: "finance-fraud-detection",
             category: "Finance",
             title: "Fraud Detection at Scale",
             company: "SecureBank Corp",
@@ -40,6 +42,7 @@ const CaseStudies = () => {
             industry: "FinTech"
         },
         {
+            id: "healthcare-drug-discovery",
             category: "Healthcare",
             title: "Accelerating Drug Discovery",
             company: "MedInnovate Labs",
@@ -57,6 +60,7 @@ const CaseStudies = () => {
             industry: "Pharma"
         },
         {
+            id: "manufacturing-predictive-maintenance",
             category: "Manufacturing",
             title: "Predictive Maintenance Revolution",
             company: "AutoManufacture Inc",
@@ -74,6 +78,7 @@ const CaseStudies = () => {
             industry: "Manufacturing"
         },
         {
+            id: "retail-personalized-shopping",
             category: "Retail",
             title: "Personalized Shopping Experience",
             company: "RetailMax Chain",
@@ -91,6 +96,7 @@ const CaseStudies = () => {
             industry: "E-commerce"
         },
         {
+            id: "government-smart-city",
             category: "Government",
             title: "Smart City Infrastructure",
             company: "Metro City Council",
@@ -209,7 +215,7 @@ const CaseStudies = () => {
                                         </div>
                                     </div>
 
-                                    <Link to="/contact" className="case-study-link">
+                                    <Link to={`/case-studies/${study.id}`} className="case-study-link">
                                         Read Full Case Study <ArrowRight className="w-5 h-5" />
                                     </Link>
                                 </div>

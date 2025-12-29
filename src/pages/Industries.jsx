@@ -1,4 +1,4 @@
-import { Users, Heart, Building2, Factory, ShoppingCart, Shield, ArrowRight, TrendingUp, CheckCircle } from 'lucide-react';
+import { Users, Heart, Building2, Factory, ShoppingCart, Shield, ArrowRight, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { MediaImage, HealthImage, TransportImage, EcommerceImage } from '../assets/industry-images.jsx';
 import './Industries.css';
@@ -19,7 +19,8 @@ const Industries = () => {
             ],
             stats: { metric: "10M+", label: "Content Views Analyzed" },
             color: "blue",
-            imageComponent: <MediaImage />
+            imageComponent: <MediaImage />,
+            link: "/industries/media-entertainment"
         },
         {
             icon: <Heart className="w-10 h-10" />,
@@ -35,7 +36,8 @@ const Industries = () => {
             ],
             stats: { metric: "500K+", label: "Policies Processed" },
             color: "red",
-            imageComponent: <HealthImage />
+            imageComponent: <HealthImage />,
+            link: "/industries/healthcare-insurance"
         },
         {
             icon: <Factory className="w-10 h-10" />,
@@ -51,7 +53,8 @@ const Industries = () => {
             ],
             stats: { metric: "1000+", label: "Fleet Vehicles Optimized" },
             color: "green",
-            imageComponent: <TransportImage />
+            imageComponent: <TransportImage />,
+            link: "/industries/transportation-logistics"
         },
         {
             icon: <ShoppingCart className="w-10 h-10" />,
@@ -67,7 +70,8 @@ const Industries = () => {
             ],
             stats: { metric: "2M+", label: "Customers Served" },
             color: "orange",
-            imageComponent: <EcommerceImage />
+            imageComponent: <EcommerceImage />,
+            link: "/industries/ecommerce-retail"
         }
     ];
 
@@ -142,7 +146,7 @@ const Industries = () => {
                                         <div className="industry-stats-label">{industry.stats.label}</div>
                                     </div>
 
-                                    <Link to="/contact" className="industry-link">
+                                    <Link to={industry.link} className="industry-link">
                                         Learn More <ArrowRight className="w-5 h-5" />
                                     </Link>
                                 </div>

@@ -1,5 +1,4 @@
-import React from 'react';
-import { Brain, Database, Server, Code, BarChart, Shield, Cloud, Cpu, Zap, Users, ArrowRight, CheckCircle, TrendingUp, Lightbulb, Settings, Target } from 'lucide-react';
+import { Brain, TrendingUp, Lightbulb, Settings, ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { AnalyticsImage, AIImage, StrategyImage, AutomationImage } from '../assets/service-images.jsx';
 import './Services.css';
@@ -19,7 +18,8 @@ const Services = () => {
                 "Data Mining & Pattern Recognition"
             ],
             color: "orange",
-            imageComponent: <AnalyticsImage />
+            imageComponent: <AnalyticsImage />,
+            link: "/services/advanced-analytics"
         },
         {
             icon: <Brain className="w-10 h-10" />,
@@ -34,7 +34,8 @@ const Services = () => {
                 "AI Model Deployment & Monitoring"
             ],
             color: "blue",
-            imageComponent: <AIImage />
+            imageComponent: <AIImage />,
+            link: "/services/custom-ai"
         },
         {
             icon: <Lightbulb className="w-10 h-10" />,
@@ -49,7 +50,8 @@ const Services = () => {
                 "Team Training & Upskilling"
             ],
             color: "green",
-            imageComponent: <StrategyImage />
+            imageComponent: <StrategyImage />,
+            link: "/services/ai-strategy"
         },
         {
             icon: <Settings className="w-10 h-10" />,
@@ -64,7 +66,8 @@ const Services = () => {
                 "Integration with Existing Systems"
             ],
             color: "purple",
-            imageComponent: <AutomationImage />
+            imageComponent: <AutomationImage />,
+            link: "/services/process-automation"
         }
     ];
 
@@ -132,7 +135,7 @@ const Services = () => {
                                         ))}
                                     </ul>
                                     
-                                    <Link to="/contact" className="service-link">
+                                    <Link to={service.link} className="service-link">
                                         Learn More <ArrowRight className="w-5 h-5" />
                                     </Link>
                                 </div>
